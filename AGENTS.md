@@ -43,7 +43,7 @@ If shared docs are not accessible, continue with the local rules here and ask fo
 
 ## Project Structure And Ownership
 
-<!-- Fill this in when initializing the repo. Run: agent-kit init -->
+<!-- Fill this in when initializing the repo -->
 
 | Path or Area | Owns | Notes |
 |---|---|---|

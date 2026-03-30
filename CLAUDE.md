@@ -42,7 +42,7 @@ If shared docs are not accessible in the current environment, continue with the 
 
 ## Repository Context
 
-<!-- Fill this in when initializing the repo. Run: agent-kit init -->
+<!-- Fill this in when initializing the repo -->
 
 | Path or Area | Owns | Notes |
 |---|---|---|
