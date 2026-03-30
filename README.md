@@ -83,6 +83,7 @@ ai-cat agents/core.md agents/coding.md
 자주 쓰는 문서 조합을 프리셋 이름으로 꺼냅니다.
 
 ```bash
+ai-pack frontend
 ai-pack review
 ai-pack refactor
 ai-pack debug
@@ -109,6 +110,12 @@ ai-pack review src/api/session.ts src/store/authStore.ts
 - `prompts/review.md`
 - `rules/naming.md`
 
+`frontend`는 아래 조합을 한 번에 출력합니다.
+
+- `agents/core.md`
+- `agents/coding.md`
+- `agents/frontend.md`
+
 ### `ai-scaffold`
 
 현재 프로젝트 디렉터리에 엔트리 문서를 생성합니다.
@@ -133,6 +140,8 @@ ai-scaffold all --force
 
 이 명령은 기본 작업 규칙 몇 가지를 직접 포함하고, `~/.agent-kit`의 공용 문서 경로도 함께 참조하는 프로젝트 엔트리 파일을 만들어 줍니다. 그 뒤에 프로젝트 구조, 실행 명령, 로컬 규칙만 채워 넣으면 됩니다.
 
+생성된 파일에는 필요할 때만 불러오는 task-specific 문서 목록도 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`도 함께 안내됩니다.
+
 ## 기본 사용 흐름
 
 권장 흐름은 아래와 같습니다.
@@ -150,6 +159,8 @@ ai-scaffold all --force
 
 - 기본 작업
   `agents/core.md` + `agents/coding.md`
+- 프론트엔드 작업
+  기본 작업 + `agents/frontend.md`
 - 구조 변경이나 설계 검토
   기본 작업 + `agents/architecture.md`
 - 리팩터링

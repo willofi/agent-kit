@@ -1,36 +1,35 @@
-# Refactor Prompt
+# Refactor Guidelines
 
-Use this prompt when you want an AI assistant to improve existing code without changing intended behavior.
+Load this file when the task is behavior-preserving cleanup — improving structure, readability, or maintainability without changing what the code does.
 
-## Prompt
+## Before Touching Code
 
-Refactor the following code with a senior-engineering mindset.
+- Identify the main problems: complexity, duplication, poor naming, unclear flow.
+- Call out any behavior that is ambiguous before assuming it is safe to rewrite.
+- If a refactor could change observable behavior, say so explicitly and get confirmation.
 
-Goals:
+## Priorities, In Order
 
-- improve readability first
-- simplify control flow and reduce unnecessary complexity
-- remove duplication only when it improves clarity
-- improve performance only where the gain is real and low-risk
-- preserve existing behavior unless a bug is clearly identified
+1. Readability — can a teammate follow this without asking questions?
+2. Control flow — reduce nesting, flatten conditionals, remove dead branches.
+3. Naming — rename when the current name is misleading or too vague.
+4. Duplication — extract only when it genuinely reduces cognitive load, not just line count.
+5. Performance — only when the gain is real, measurable, and low-risk.
 
-Instructions:
+## Constraints
 
-- explain the main problems before changing the code
-- prefer small, obvious abstractions over generic frameworks
-- keep naming explicit and domain-oriented
-- avoid speculative architecture and premature optimization
-- call out ambiguous behavior before assuming a rewrite is safe
+- Preserve existing behavior unless a bug is clearly identified.
+- Prefer small, obvious abstractions over clever frameworks.
+- Keep changes focused — do not refactor adjacent code unless it is directly in the way.
+- Avoid speculative architecture. Refactor for today's use case, not hypothetical future ones.
 
-Output format:
+## Output Format
 
-1. Brief diagnosis of the current code
-2. Refactored code
-3. Short explanation of what changed and why
-4. Any risks, edge cases, or follow-up improvements worth considering
+1. Brief diagnosis: what is wrong and why it matters.
+2. Refactored code.
+3. What changed and why — one line per meaningful change.
+4. Any risks, edge cases, or follow-up improvements worth flagging.
 
-Code to refactor:
+## When To Stop
 
-```ts
-// paste code here
-```
+If the refactor requires understanding business context you do not have, stop and ask. A wrong refactor is worse than messy code.
