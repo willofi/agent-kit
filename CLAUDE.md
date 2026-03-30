@@ -30,6 +30,7 @@ Load these shared docs only when they match the task:
 
 Do not load task-specific shared docs unless the current task requires them.
 
+- frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
 - architecture: `~/.agent-kit/agents/architecture.md` for structure, boundaries, and large design changes
 - review: `~/.agent-kit/prompts/review.md` for code review tasks
 - refactor: `~/.agent-kit/prompts/refactor.md` for behavior-preserving cleanup
@@ -41,33 +42,38 @@ If shared docs are not accessible in the current environment, continue with the 
 
 ## Repository Context
 
-TODO: Replace this section with repo-specific facts.
+<!-- Fill this in when initializing the repo. Run: agent-kit init -->
 
-- main directories, boundaries, and generated paths
-- the parts of the codebase that deserve extra caution
+| Path or Area | Owns | Notes |
+|---|---|---|
+| `src/` | application source | hand-maintained |
+| `public/` | static assets | do not edit casually |
+
+<!-- Add fragile zones, generated files, or areas requiring extra care -->
 
 ## Commands And Validation
 
-TODO: Replace this section with the real commands used in this repository.
+<!-- Replace with actual commands for this repo -->
 
-- install: `<command>`
-- dev: `<command>`
-- build: `<command>`
-- lint: `<command>`
-- test: `<command>`
-- minimum validation before done: `<command>`, `<command>`
-- if no reliable automated test exists, say so explicitly and describe the manual validation performed
+- install: `pnpm install`
+- dev: `pnpm dev`
+- build: `pnpm build`
+- lint: `pnpm lint`
+- test: `pnpm test`
+- minimum validation before done: `pnpm lint && pnpm build`
+
+<!-- If no reliable automated test exists, say so explicitly -->
 
 ## Local Rules
 
-TODO: Replace this section with project-specific rules.
+<!-- Replace this section with project-specific rules that differ from the shared baseline -->
 
-- project-specific constraints, conventions, and exceptions
-- product, infra, auth, or data-handling constraints that matter often
+- (none yet — add project-specific constraints, conventions, or caveats here)
 
 ## Done Criteria
 
-TODO: Replace this section with completion expectations for this repository.
+<!-- Replace this section with completion expectations for this repository -->
 
-- what a good final response should mention here
-- review, release, or documentation expectations that should not be skipped
+- mention what changed and why, at the right level for the task
+- mention the validation that was run, or say explicitly if it was not run
+- mention notable risks, assumptions, or follow-up work when they matter

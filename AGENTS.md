@@ -31,8 +31,7 @@ Use these shared docs by default when they are accessible:
 
 Load these shared docs only when they match the task:
 
-Do not load task-specific shared docs unless the current task requires them.
-
+- frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
 - architecture: `~/.agent-kit/agents/architecture.md` for structure, boundaries, and large design changes
 - review: `~/.agent-kit/prompts/review.md` for code review tasks
 - refactor: `~/.agent-kit/prompts/refactor.md` for behavior-preserving cleanup
@@ -40,38 +39,40 @@ Do not load task-specific shared docs unless the current task requires them.
 - naming: `~/.agent-kit/rules/naming.md` when naming quality materially affects the work
 - git: `~/.agent-kit/rules/git.md` when commit or PR behavior matters
 
-If shared docs are not accessible in the current environment, continue with the local rules here and ask for specific shared contents only when they materially affect the task.
+If shared docs are not accessible, continue with the local rules here and ask for specific contents only when they materially affect the task.
 
 ## Project Structure And Ownership
 
-TODO: Replace this section with repo-specific facts.
+<!-- Fill this in when initializing the repo. Run: agent-kit init -->
 
-- `<path-or-area>`: what it owns, and whether it is hand-maintained or generated
-- `<path-or-area>`: boundaries, fragile zones, or files that should not be edited casually
+| Path or Area | Owns | Notes |
+|---|---|---|
+| `src/` | application source | hand-maintained |
+| `public/` | static assets | do not edit casually |
+
+<!-- Add fragile zones, generated files, or areas requiring extra care -->
 
 ## Build, Test, And Development Commands
 
-TODO: Replace this section with the real commands used in this repository.
+<!-- Replace with actual commands for this repo -->
 
-- install: `<command>`
-- dev: `<command>`
-- build: `<command>`
-- lint: `<command>`
-- test: `<command>`
-- minimum validation before submit: `<command>`, `<command>`
-- if no reliable automated test exists, say so explicitly and describe the manual validation performed
+- install: `pnpm install`
+- dev: `pnpm dev`
+- build: `pnpm build`
+- lint: `pnpm lint`
+- test: `pnpm test`
+- minimum validation before submit: `pnpm lint && pnpm build`
+
+<!-- If no reliable automated test exists, say so explicitly -->
 
 ## Local Conventions And Constraints
 
-TODO: Replace this section with project-specific rules.
+<!-- Replace with project-specific rules that differ from the shared baseline -->
 
-- architecture or framework conventions that differ from the shared baseline
-- compatibility, deployment, or environment caveats
-- naming, typing, or layering rules that matter often
+- (none yet — add architecture quirks, env requirements, or deployment caveats here)
 
 ## Review Notes
 
-TODO: Replace this section with the failure modes that matter most here.
+<!-- Add failure modes that matter most in this repo -->
 
-- common regression risks
-- migration, rollout, or release checks if they matter
+- (none yet — add common regression risks or release checklist items here)

@@ -108,7 +108,7 @@ ai-cat() {
 ai-pack() {
   if [[ "\$#" -eq 0 ]]; then
     printf 'usage: ai-pack <preset> [target-path ...]\n' >&2
-    printf 'available presets: review, review-strict, refactor, debug, architecture\n' >&2
+    printf 'available presets: frontend, review, review-strict, refactor, debug, architecture\n' >&2
     return 1
   fi
 
@@ -124,12 +124,20 @@ ai-pack() {
     list|--list|-l)
       printf 'available presets:\n'
       printf '%s\n' \
+        'frontend' \
         'review' \
         'review-strict' \
         'refactor' \
         'debug' \
         'architecture'
       return 0
+      ;;
+    frontend)
+      ai-cat \
+        agents/core.md \
+        agents/coding.md \
+        agents/frontend.md || return 1
+      section_label='Frontend targets:'
       ;;
     review)
       ai-cat \
@@ -170,7 +178,7 @@ ai-pack() {
       ;;
     *)
       printf '[agent-kit] unknown preset: %s\n' "\${preset}" >&2
-      printf 'available presets: review, review-strict, refactor, debug, architecture\n' >&2
+      printf 'available presets: frontend, review, review-strict, refactor, debug, architecture\n' >&2
       return 1
       ;;
   esac
