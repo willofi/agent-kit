@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+AGENT_KIT_PATH="${AGENT_KIT_PATH:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
+
+fail() {
+  printf '[agent-kit] error: %s\n' "$1" >&2
+  exit 1
+}
+
+if [[ "$#" -eq 0 ]]; then
+  fail "usage: ai-cat <relative-path> [<relative-path> ...]"
+fi
+
+for relative_path in "$@"; do
+  target_path="${AGENT_KIT_PATH}/${relative_path}"
+
+  if [[ ! -f "${target_path}" ]]; then
+    fail "missing: ${target_path}"
+  fi
+
+  printf '\n===== %s =====\n\n' "${relative_path}"
+  cat "${target_path}"
+  printf '\n'
+done

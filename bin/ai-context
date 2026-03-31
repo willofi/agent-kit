@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+AGENT_KIT_PATH="${AGENT_KIT_PATH:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
+
+fail() {
+  printf '[agent-kit] error: %s\n' "$1" >&2
+  exit 1
+}
+
+if [[ ! -d "${AGENT_KIT_PATH}" ]]; then
+  fail "missing: ${AGENT_KIT_PATH}"
+fi
+
+search_roots=()
+
+for directory in agents prompts rules cursor; do
+  if [[ -d "${AGENT_KIT_PATH}/${directory}" ]]; then
+    search_roots+=("${AGENT_KIT_PATH}/${directory}")
+  fi
+done
+
+if [[ "${#search_roots[@]}" -eq 0 ]]; then
+  fail "no context directories found under ${AGENT_KIT_PATH}"
+fi
+
+printf 'Agent context: %s\n\n' "${AGENT_KIT_PATH}"
+find "${search_roots[@]}" -maxdepth 1 -type f | sort

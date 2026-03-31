@@ -45,32 +45,34 @@ If shared docs are not accessible in the current environment, continue with the 
 
 ## Project Structure And Ownership
 
-- `agents/`: shared baseline and task-specific operating docs; hand-maintained
-- `prompts/`: reusable task prompts for review, refactor, and debug workflows
-- `rules/`: cross-cutting naming and Git rules that other repos can import
-- `cursor/`: Cursor-specific entry rules; keep aligned with the shared docs they reference
-- `templates/`: generic downstream templates consumed by `ai-scaffold`; keep placeholders generic and tool-agnostic
-- `bin/`: installed CLI commands such as `ai-context`, `ai-cat`, `ai-pack`, and `ai-scaffold`
-- `scripts/`: bootstrap, scaffold, and smoke-test automation; changes here should be validated end-to-end
+TODO: Replace this section with repo-specific facts.
+
+- `<path-or-area>`: what it owns, and whether it is hand-maintained or generated
+- `<path-or-area>`: boundaries, fragile zones, or files that should not be edited casually
 
 ## Build, Test, And Development Commands
 
-- install: none
-- dev: n/a
-- build: n/a
-- lint: `bash -n scripts/*.sh bin/*`
-- test: `bash scripts/test.sh`
-- minimum validation before submit: `bash scripts/test.sh`
+TODO: Replace this section with the real commands used in this repository.
+
+- install: `<command>`
+- dev: `<command>`
+- build: `<command>`
+- lint: `<command>`
+- test: `<command>`
+- minimum validation before submit: `<command>`, `<command>`
+- if no reliable automated test exists, say so explicitly and describe the manual validation performed
 
 ## Local Conventions And Constraints
 
-- Keep docs short and composable. Prefer assistant-neutral guidance unless a file is intentionally tool-specific.
-- Keep README examples, preset behavior, templates, and installed commands in sync within the same change.
-- Avoid hard-coded example project structures or package-manager commands in shared templates unless they are clearly marked as placeholders.
-- Prefer backwards-compatible CLI and preset changes. If behavior changes, update the migration guidance in `README.md`.
+TODO: Replace this section with project-specific rules.
+
+- architecture or framework conventions that differ from the shared baseline
+- compatibility, deployment, or environment caveats
+- naming, typing, or layering rules that matter often
 
 ## Review Notes
 
-- Drift between `README.md` and the actual behavior of `bin/` or `scripts/` is a primary regression risk.
-- Shell setup changes must work in both the zsh path and the POSIX `.profile` path used by bootstrap.
-- Changes to scaffold output should verify that generic templates stay generic and do not accidentally copy repo-specific facts.
+TODO: Replace this section with the failure modes that matter most here.
+
+- common regression risks
+- migration, rollout, or release checks if they matter

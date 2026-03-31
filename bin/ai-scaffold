@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+AGENT_KIT_PATH="${AGENT_KIT_PATH:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
+
+exec "${AGENT_KIT_PATH}/scripts/scaffold-project-docs.sh" "$@"

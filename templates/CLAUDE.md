@@ -42,27 +42,33 @@ If shared docs are not accessible in the current environment, continue with the 
 
 ## Repository Context
 
-- `agents/`, `prompts/`, and `rules/` are the reusable shared guidance that downstream repos consume.
-- `templates/` contains the generic scaffold source for downstream `AGENTS.md` and `CLAUDE.md` files. Do not replace placeholders here with repo-specific facts.
-- `bin/` contains the installed `ai-*` commands that bootstrap exposes on `PATH`.
-- `scripts/` owns bootstrap, scaffold, and smoke-test behavior. Keep it aligned with `README.md`.
+TODO: Replace this section with repo-specific facts.
+
+- `<path-or-area>`: what it owns, whether it is generated, and any edit boundaries that matter
+- `<path-or-area>`: fragile zones, deployment caveats, or areas requiring extra care
 
 ## Commands And Validation
 
-- install: none
-- dev: n/a
-- build: n/a
-- lint: `bash -n scripts/*.sh bin/*`
-- test: `bash scripts/test.sh`
-- minimum validation before done: `bash scripts/test.sh`
+TODO: Replace this section with the real commands used in this repository.
+
+- install: `<command>`
+- dev: `<command>`
+- build: `<command>`
+- lint: `<command>`
+- test: `<command>`
+- minimum validation before done: `<command>`, `<command>`
+- if no reliable automated test exists, say so explicitly and describe the manual validation performed
 
 ## Local Rules
 
-- Treat documentation accuracy as product behavior. If a preset, command, or template changes, update the docs in the same patch.
-- Prefer composable, reusable guidance over long assistant-specific monoliths.
-- Preserve generic placeholders in `templates/` so scaffolded files do not make false assumptions about downstream repos.
+TODO: Replace this section with project-specific rules that differ from the shared baseline.
+
+- conventions that affect architecture, naming, typing, or layering
+- environment, deployment, or compatibility constraints
 
 ## Done Criteria
+
+TODO: Replace this section with completion expectations for this repository.
 
 - mention what changed and why, at the right level for the task
 - mention the validation that was run, or say explicitly if it was not run

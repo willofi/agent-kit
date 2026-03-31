@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+AGENT_KIT_PATH="${AGENT_KIT_PATH:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
+
+print_presets() {
+  printf '%s\n' \
+    'frontend' \
+    'review' \
+    'review-strict' \
+    'refactor' \
+    'debug' \
+    'architecture'
+}
+
+fail() {
+  printf '[agent-kit] error: %s\n' "$1" >&2
+  exit 1
+}
+
+run_ai_cat() {
+  "${AGENT_KIT_PATH}/bin/ai-cat" "$@"
+}
+
+if [[ "$#" -eq 0 ]]; then
+  printf 'usage: ai-pack <preset> [target-path ...]\n' >&2
+  printf 'available presets:\n' >&2
+  print_presets >&2
+  exit 1
+fi
+
+preset="$1"
+section_label=""
+shift
+
+case "${preset}" in
+  list|--list|-l)
+    printf 'available presets:\n'
+    print_presets
+    exit 0
+    ;;
+  frontend)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      agents/frontend.md
+    section_label='Frontend targets:'
+    ;;
+  review)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      prompts/review.md \
+      rules/naming.md
+    section_label='Review targets:'
+    ;;
+  review-strict)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      prompts/review.md \
+      rules/naming.md \
+      rules/git.md
+    section_label='Review targets:'
+    ;;
+  refactor)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      prompts/refactor.md
+    section_label='Refactor targets:'
+    ;;
+  debug)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      prompts/debug.md
+    section_label='Debug targets:'
+    ;;
+  architecture)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      agents/architecture.md
+    section_label='Architecture targets:'
+    ;;
+  *)
+    printf '[agent-kit] unknown preset: %s\n' "${preset}" >&2
+    printf 'available presets:\n' >&2
+    print_presets >&2
+    exit 1
+    ;;
+esac
+
+if [[ "$#" -gt 0 ]]; then
+  printf '\n%s\n' "${section_label}"
+
+  for target_path in "$@"; do
+    printf -- '- %s\n' "${target_path}"
+  done
+
+  printf '\n'
+fi

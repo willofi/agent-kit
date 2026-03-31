@@ -14,6 +14,10 @@
   네이밍, Git 같은 팀 규칙
 - `cursor/`
   Cursor용 짧은 규칙 문서
+- `templates/`
+  새 프로젝트에 복사할 엔트리 문서 템플릿
+- `bin/`
+  bootstrap 후 바로 쓰는 `ai-*` 명령
 - `scripts/`
   로컬 설치와 갱신용 스크립트
 
@@ -33,15 +37,19 @@ bash scripts/bootstrap.sh
 - 지금 로컬에서 보고 있는 버전이 그대로 설치됩니다.
 - 문서를 수정했거나 `git pull`로 최신 상태를 받았다면, 다시 실행하면 됩니다.
 
-스크립트는 셸 설정 파일도 함께 갱신합니다.
+스크립트는 셸 시작 파일도 함께 갱신합니다.
 
 - `zsh`: `~/.zshrc`
 - `bash`: `~/.bashrc` 또는 `~/.bash_profile`
-- 그 외: `~/.profile`
+- `.profile`을 읽는 POSIX 셸: `~/.profile`
 
-추가되는 항목은 아래 다섯 가지입니다.
+추가되는 항목은 아래 두 가지입니다.
 
 - `AGENT_KIT_PATH`
+- `~/.agent-kit/bin` PATH 등록
+
+그 결과 아래 명령을 셸에서 바로 사용할 수 있게 됩니다.
+
 - `ai-context`
 - `ai-cat`
 - `ai-pack`
@@ -56,7 +64,17 @@ source ~/.zshrc
 # 또는 source ~/.profile
 ```
 
-## 셸 함수
+사용 중인 셸이 위 파일을 자동으로 읽지 않는다면 아래 두 줄을 해당 셸 설정에 맞게 직접 추가하면 됩니다.
+
+```sh
+export AGENT_KIT_PATH="$HOME/.agent-kit"
+case ":$PATH:" in
+  *":$AGENT_KIT_PATH/bin:"*) ;;
+  *) export PATH="$AGENT_KIT_PATH/bin:$PATH" ;;
+esac
+```
+
+## 설치되는 명령
 
 ### `ai-context`
 
@@ -116,6 +134,12 @@ ai-pack review src/api/session.ts src/store/authStore.ts
 - `agents/coding.md`
 - `agents/frontend.md`
 
+`architecture`는 아래 조합을 한 번에 출력합니다.
+
+- `agents/core.md`
+- `agents/coding.md`
+- `agents/architecture.md`
+
 ### `ai-scaffold`
 
 현재 프로젝트 디렉터리에 엔트리 문서를 생성합니다.
@@ -138,9 +162,9 @@ ai-scaffold all
 ai-scaffold all --force
 ```
 
-이 명령은 기본 작업 규칙 몇 가지를 직접 포함하고, `~/.agent-kit`의 공용 문서 경로도 함께 참조하는 프로젝트 엔트리 파일을 만들어 줍니다. 그 뒤에 프로젝트 구조, 실행 명령, 로컬 규칙만 채워 넣으면 됩니다.
+이 명령은 `templates/AGENTS.md`와 `templates/CLAUDE.md`를 바탕으로, `~/.agent-kit`의 공용 문서 경로를 참조하는 프로젝트 엔트리 파일을 만들어 줍니다. 저장소 루트의 `AGENTS.md`와 `CLAUDE.md`는 이 저장소 자체를 위한 문서이고, scaffold용 원본은 `templates/` 아래에서 따로 관리합니다.
 
-생성된 파일에는 필요할 때만 불러오는 task-specific 문서 목록도 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`도 함께 안내됩니다.
+생성된 파일에는 generic placeholder가 남아 있으므로, 프로젝트 구조와 실행 명령 같은 실제 정보는 생성 후에 채워 넣어야 합니다. 필요할 때만 불러오는 task-specific 문서 목록도 함께 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`도 안내됩니다.
 
 ## 기본 사용 흐름
 

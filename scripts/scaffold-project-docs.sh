@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-TEMPLATE_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+TEMPLATE_DIR="$(cd "${SCRIPT_DIR}/../templates" && pwd)"
 TARGET_DIR="$(pwd)"
 FORCE=0
 
