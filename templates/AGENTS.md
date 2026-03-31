@@ -32,6 +32,7 @@ Use these shared docs by default when they are accessible:
 Load these shared docs only when they match the task:
 
 Do not load task-specific shared docs unless the current task requires them.
+When gathering additional shared or repository context, start with the smallest relevant scope and avoid bulk-loading files or docs.
 
 - frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
 - architecture: `~/.agent-kit/agents/architecture.md` for structure, boundaries, and large design changes
