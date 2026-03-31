@@ -45,34 +45,35 @@ If shared docs are not accessible in the current environment, continue with the 
 
 ## Project Structure And Ownership
 
-TODO: Replace this section with repo-specific facts.
+<!-- Replace this section with repo-specific facts when they are known.
+Keep the file usable even before customization: if details are missing, inspect the repository directly instead of guessing. -->
 
-- `<path-or-area>`: what it owns, and whether it is hand-maintained or generated
-- `<path-or-area>`: boundaries, fragile zones, or files that should not be edited casually
+- Inspect the repository directly before assuming ownership, boundaries, or generated areas.
+- Document fragile paths, generated files, or ownership boundaries here when they become clear.
 
 ## Build, Test, And Development Commands
 
-TODO: Replace this section with the real commands used in this repository.
+<!-- Replace these with repo-specific commands when they are known.
+Until then, discover commands from the repository itself rather than guessing. -->
 
-- install: `<command>`
-- dev: `<command>`
-- build: `<command>`
-- lint: `<command>`
-- test: `<command>`
-- minimum validation before submit: `<command>`, `<command>`
+- install: inspect the repo before choosing a command
+- dev: inspect the repo before choosing a command
+- build: inspect the repo before choosing a command
+- lint: inspect the repo before choosing a command
+- test: inspect the repo before choosing the cheapest reliable automated check
+- minimum validation before submit: run the smallest reliable checks that cover the changed behavior
 - if no reliable automated test exists, say so explicitly and describe the manual validation performed
 
 ## Local Conventions And Constraints
 
-TODO: Replace this section with project-specific rules.
+<!-- Replace this section with project-specific rules when they matter. -->
 
-- architecture or framework conventions that differ from the shared baseline
-- compatibility, deployment, or environment caveats
-- naming, typing, or layering rules that matter often
+- If project-specific constraints are not documented yet, inspect the codebase and follow existing patterns rather than inventing new ones.
+- Add architecture, compatibility, deployment, naming, typing, or layering constraints here when they become stable expectations.
 
 ## Review Notes
 
-TODO: Replace this section with the failure modes that matter most here.
+<!-- Replace this section with repo-specific review risks when they are known. -->
 
-- common regression risks
-- migration, rollout, or release checks if they matter
+- Prioritize correctness, regression risk, and missing validation over style-only feedback.
+- Add common failure modes, migration concerns, rollout checks, or release-sensitive areas here when they become clear.

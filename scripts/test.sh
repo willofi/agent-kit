@@ -78,8 +78,8 @@ run_zsh_smoke_test() {
 
   check_file "${tmp_project}/AGENTS.md"
   check_file "${tmp_project}/CLAUDE.md"
-  grep -Fq '<path-or-area>' "${tmp_project}/AGENTS.md" || \
-    fail "scaffolded AGENTS.md should keep generic placeholders"
+  grep -Fq 'Inspect the repository directly before assuming ownership' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should remain usable before customization"
 }
 
 run_posix_smoke_test() {

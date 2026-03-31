@@ -42,33 +42,35 @@ If shared docs are not accessible in the current environment, continue with the 
 
 ## Repository Context
 
-TODO: Replace this section with repo-specific facts.
+<!-- Replace this section with repo-specific facts when they are known.
+Keep the file usable even before customization: if details are missing, inspect the repository directly instead of guessing. -->
 
-- `<path-or-area>`: what it owns, whether it is generated, and any edit boundaries that matter
-- `<path-or-area>`: fragile zones, deployment caveats, or areas requiring extra care
+- Inspect the repository directly before assuming ownership, generated paths, or edit boundaries.
+- Document fragile zones, deployment caveats, or areas requiring extra care here when they become clear.
 
 ## Commands And Validation
 
-TODO: Replace this section with the real commands used in this repository.
+<!-- Replace these with repo-specific commands when they are known.
+Until then, discover commands from the repository itself rather than guessing. -->
 
-- install: `<command>`
-- dev: `<command>`
-- build: `<command>`
-- lint: `<command>`
-- test: `<command>`
-- minimum validation before done: `<command>`, `<command>`
+- install: inspect the repo before choosing a command
+- dev: inspect the repo before choosing a command
+- build: inspect the repo before choosing a command
+- lint: inspect the repo before choosing a command
+- test: inspect the repo before choosing the cheapest reliable automated check
+- minimum validation before done: run the smallest reliable checks that cover the changed behavior
 - if no reliable automated test exists, say so explicitly and describe the manual validation performed
 
 ## Local Rules
 
-TODO: Replace this section with project-specific rules that differ from the shared baseline.
+<!-- Replace this section with project-specific rules that differ from the shared baseline when they matter. -->
 
-- conventions that affect architecture, naming, typing, or layering
-- environment, deployment, or compatibility constraints
+- If project-specific rules are not documented yet, inspect the codebase and follow existing patterns rather than inventing new ones.
+- Add architecture, naming, typing, layering, environment, deployment, or compatibility constraints here when they become stable expectations.
 
 ## Done Criteria
 
-TODO: Replace this section with completion expectations for this repository.
+<!-- Replace this section with repo-specific completion expectations when they are known. -->
 
 - mention what changed and why, at the right level for the task
 - mention the validation that was run, or say explicitly if it was not run
