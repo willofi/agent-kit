@@ -107,7 +107,7 @@ configure_shell() {
   ' "${rc_file}" > "${temp_file}"
 
   mv "${temp_file}" "${rc_file}"
-  printf '\n%s\n' "${shell_block}" >> "${rc_file}"
+  printf '%s\n' "${shell_block}" >> "${rc_file}"
 
   if [[ "${had_block}" -eq 1 ]]; then
     log "Updated shell configuration in ${rc_file}"
