@@ -102,6 +102,7 @@ ai-cat agents/core.md agents/coding.md
 
 ```bash
 ai-pack frontend
+ai-pack backend
 ai-pack review
 ai-pack refactor
 ai-pack debug
@@ -134,6 +135,12 @@ ai-pack review src/api/session.ts src/store/authStore.ts
 - `agents/coding.md`
 - `agents/frontend.md`
 
+`backend`는 아래 조합을 한 번에 출력합니다.
+
+- `agents/core.md`
+- `agents/coding.md`
+- `agents/backend.md`
+
 `architecture`는 아래 조합을 한 번에 출력합니다.
 
 - `agents/core.md`
@@ -164,7 +171,7 @@ ai-scaffold all --force
 
 이 명령은 `templates/AGENTS.md`와 `templates/CLAUDE.md`를 바탕으로, `~/.agent-kit`의 공용 문서 경로를 참조하는 프로젝트 엔트리 파일을 만들어 줍니다. 저장소 루트의 `AGENTS.md`와 `CLAUDE.md`는 이 저장소 자체를 위한 문서이고, scaffold용 원본은 `templates/` 아래에서 따로 관리합니다.
 
-생성된 파일은 바로 사용할 수 있는 generic 기본값을 포함하고, 나중에 구체화할 부분만 주석으로 남깁니다. 프로젝트 구조나 실행 명령을 아직 적지 않았더라도, 문서가 비어 있는 상태로 시작하지 않도록 하는 쪽을 기본값으로 둡니다. 필요할 때만 불러오는 task-specific 문서 목록도 함께 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`도 안내됩니다.
+생성된 파일은 바로 사용할 수 있는 generic 기본값을 포함하고, 나중에 구체화할 부분만 주석으로 남깁니다. 프로젝트 구조나 실행 명령을 아직 적지 않았더라도, 문서가 비어 있는 상태로 시작하지 않도록 하는 쪽을 기본값으로 둡니다. 필요할 때만 불러오는 task-specific 문서 목록도 함께 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`와 API, DB, server-side logic 작업용 `agents/backend.md`도 안내됩니다.
 
 ## 기본 사용 흐름
 
@@ -185,6 +192,8 @@ ai-scaffold all --force
   `agents/core.md` + `agents/coding.md`
 - 프론트엔드 작업
   기본 작업 + `agents/frontend.md`
+- 백엔드 작업
+  기본 작업 + `agents/backend.md`
 - 구조 변경이나 설계 검토
   기본 작업 + `agents/architecture.md`
 - 리팩터링

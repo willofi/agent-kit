@@ -12,6 +12,7 @@
 Use these defaults unless project-local instructions say otherwise:
 
 - Prefer direct, concrete recommendations over vague options.
+- For functional changes, prefer a test-first loop when requirements are clear: capture the expected behavior, implement it, then verify it.
 - Keep code changes focused and easy to review.
 - Match the existing stack and local conventions unless they are clearly harmful.
 - Explain important assumptions, risks, and trade-offs.
@@ -32,6 +33,7 @@ Do not load task-specific shared docs unless the current task requires them.
 When gathering additional shared or repository context, start with the smallest relevant scope and avoid bulk-loading files or docs.
 
 - frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
+- backend: `~/.agent-kit/agents/backend.md` for API design, database changes, authentication, background jobs, or server-side logic
 - architecture: `~/.agent-kit/agents/architecture.md` for structure, boundaries, and large design changes
 - review: `~/.agent-kit/prompts/review.md` for code review tasks
 - refactor: `~/.agent-kit/prompts/refactor.md` for behavior-preserving cleanup
@@ -67,6 +69,7 @@ Until then, discover commands from the repository itself rather than guessing. -
 <!-- Replace this section with project-specific rules that differ from the shared baseline when they matter. -->
 
 - If project-specific rules are not documented yet, inspect the codebase and follow existing patterns rather than inventing new ones.
+- Follow the project's existing import style. If it already uses path aliases, keep aliases defined in the appropriate project config and use them consistently.
 - Add architecture, naming, typing, layering, environment, deployment, or compatibility constraints here when they become stable expectations.
 
 ## Done Criteria

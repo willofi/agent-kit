@@ -4,7 +4,7 @@ Load this file when the task involves React, Next.js, or client-side state manag
 
 ## React
 
-- Use functional components only.
+- Prefer functional components for new React code, and preserve existing class components unless there is a clear reason to migrate.
 - Keep components focused on rendering and interaction.
 - Move growing logic out of the view layer into hooks or domain modules.
 - Avoid putting business logic inside JSX callbacks.
@@ -36,6 +36,7 @@ Load this file when the task involves React, Next.js, or client-side state manag
 ## Styling
 
 - Follow the project's existing styling approach (Tailwind, CSS Modules, etc.).
+- Prefer existing shadcn/ui components when the project already uses shadcn/ui or when it is explicitly requested.
 - Do not introduce a new styling system without a clear reason.
 - Keep style co-located with the component unless the project separates them.
 

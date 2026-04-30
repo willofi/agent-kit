@@ -4,9 +4,10 @@ Use names that reveal intent, not shorthand known only to the original author.
 
 ## Core Conventions
 
-- `camelCase` for variables, functions, object properties, and local helpers
-- `PascalCase` for components, types, interfaces, classes, and enums
-- `UPPER_SNAKE_CASE` for compile-time constants and environment variables
+- Follow the host language and framework naming conventions first.
+- In JavaScript or TypeScript projects, prefer `camelCase` for variables, functions, object properties, and local helpers.
+- In JavaScript or TypeScript projects, prefer `PascalCase` for components, types, interfaces, classes, and enums.
+- In JavaScript or TypeScript projects, prefer `UPPER_SNAKE_CASE` for compile-time constants and environment variables.
 
 ## Practical Rules
 

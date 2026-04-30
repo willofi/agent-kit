@@ -32,6 +32,7 @@ Do not load task-specific shared docs unless the current task requires them.
 When gathering additional shared or repository context, start with the smallest relevant scope and avoid bulk-loading files or docs.
 
 - frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
+- backend: `~/.agent-kit/agents/backend.md` for API design, database changes, authentication, background jobs, or server-side logic
 - architecture: `~/.agent-kit/agents/architecture.md` for structure, boundaries, and large design changes
 - review: `~/.agent-kit/prompts/review.md` for code review tasks
 - refactor: `~/.agent-kit/prompts/refactor.md` for behavior-preserving cleanup

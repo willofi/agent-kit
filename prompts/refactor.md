@@ -26,7 +26,7 @@ Load this file when the task is behavior-preserving cleanup — improving struct
 ## Output Format
 
 1. Brief diagnosis: what is wrong and why it matters.
-2. Refactored code.
+2. Refactored code or changed files.
 3. What changed and why — one line per meaningful change.
 4. Any risks, edge cases, or follow-up improvements worth flagging.
 

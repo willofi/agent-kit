@@ -14,6 +14,7 @@ This file is the repo-local entry point for AI working rules.
 Use these defaults unless project-local code clearly requires otherwise:
 
 - Prefer readable code over clever code.
+- For functional changes, prefer a test-first loop when requirements are clear: capture the expected behavior, implement it, then verify it.
 - Keep changes focused and avoid unrelated churn.
 - Match the existing stack and code style unless it is clearly harmful.
 - Validate assumptions at system boundaries and make failure paths easy to trace.
@@ -35,6 +36,7 @@ Do not load task-specific shared docs unless the current task requires them.
 When gathering additional shared or repository context, start with the smallest relevant scope and avoid bulk-loading files or docs.
 
 - frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
+- backend: `~/.agent-kit/agents/backend.md` for API design, database changes, authentication, background jobs, or server-side logic
 - architecture: `~/.agent-kit/agents/architecture.md` for structure, boundaries, and large design changes
 - review: `~/.agent-kit/prompts/review.md` for code review tasks
 - refactor: `~/.agent-kit/prompts/refactor.md` for behavior-preserving cleanup
@@ -69,6 +71,7 @@ Until then, discover commands from the repository itself rather than guessing. -
 
 <!-- Replace this section with project-specific rules when they matter. -->
 
+- Follow the project's existing import style. If it already uses path aliases, keep aliases defined in the appropriate project config and use them consistently.
 - If project-specific constraints are not documented yet, inspect the codebase and follow existing patterns rather than inventing new ones.
 - Add architecture, compatibility, deployment, naming, typing, or layering constraints here when they become stable expectations.
 

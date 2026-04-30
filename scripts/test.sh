@@ -58,6 +58,8 @@ run_zsh_smoke_test() {
   local tmp_home
   local tmp_project
   local architecture_output
+  local backend_output
+  local preset_output
 
   tmp_home="$(make_temp_dir)"
   tmp_project="$(make_temp_dir)"
@@ -65,11 +67,19 @@ run_zsh_smoke_test() {
   log "Running zsh bootstrap smoke test"
   HOME="${tmp_home}" SHELL=/bin/zsh bash "${REPO_ROOT}/scripts/bootstrap.sh" >/dev/null
 
-  HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack list >/dev/null'
+  preset_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack list')"
+  [[ "${preset_output}" == *"backend"* ]] || \
+    fail "preset list should include backend"
+
   architecture_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack architecture')"
+  backend_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack backend')"
 
   [[ "${architecture_output}" == *"===== agents/coding.md ====="* ]] || \
     fail "architecture preset should include agents/coding.md"
+  [[ "${backend_output}" == *"===== agents/backend.md ====="* ]] || \
+    fail "backend preset should include agents/backend.md"
+  [[ "${backend_output}" == *"===== agents/coding.md ====="* ]] || \
+    fail "backend preset should include agents/coding.md"
 
   (
     cd "${tmp_project}"
@@ -80,6 +90,10 @@ run_zsh_smoke_test() {
   check_file "${tmp_project}/CLAUDE.md"
   grep -Fq 'Inspect the repository directly before assuming ownership' "${tmp_project}/AGENTS.md" || \
     fail "scaffolded AGENTS.md should remain usable before customization"
+  grep -Fq 'agents/backend.md' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should mention backend shared docs"
+  grep -Fq 'agents/backend.md' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should mention backend shared docs"
 }
 
 run_posix_smoke_test() {

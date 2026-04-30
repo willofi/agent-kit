@@ -4,7 +4,7 @@ Git history should help a teammate understand what changed and why without readi
 
 ## Commit Message Format
 
-Use conventional commits:
+Prefer conventional commits unless the project has an established different format:
 
 - `feat`
 - `fix`

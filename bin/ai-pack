@@ -7,6 +7,7 @@ AGENT_KIT_PATH="${AGENT_KIT_PATH:-$(cd "${SCRIPT_DIR}/.." && pwd)}"
 print_presets() {
   printf '%s\n' \
     'frontend' \
+    'backend' \
     'review' \
     'review-strict' \
     'refactor' \
@@ -46,6 +47,13 @@ case "${preset}" in
       agents/coding.md \
       agents/frontend.md
     section_label='Frontend targets:'
+    ;;
+  backend)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      agents/backend.md
+    section_label='Backend targets:'
     ;;
   review)
     run_ai_cat \
