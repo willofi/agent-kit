@@ -11,6 +11,10 @@ When multiple options are valid, prefer the one that:
 - keeps testing straightforward
 - reduces cross-module coordination
 
+For non-trivial features, design changes, complex bug fixes, or
+high-regression-risk work, load `agents/sdd.md` and use the spec-driven flow
+before implementation.
+
 ## Communication
 
 - Be concise, factual, and useful.
