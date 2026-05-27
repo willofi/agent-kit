@@ -59,7 +59,9 @@ run_zsh_smoke_test() {
   local tmp_project
   local architecture_output
   local backend_output
+  local context_output
   local preset_output
+  local sdd_output
 
   tmp_home="$(make_temp_dir)"
   tmp_project="$(make_temp_dir)"
@@ -70,9 +72,13 @@ run_zsh_smoke_test() {
   preset_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack list')"
   [[ "${preset_output}" == *"backend"* ]] || \
     fail "preset list should include backend"
+  [[ "${preset_output}" == *"sdd"* ]] || \
+    fail "preset list should include sdd"
 
   architecture_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack architecture')"
   backend_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack backend')"
+  sdd_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-pack sdd')"
+  context_output="$(HOME="${tmp_home}" /bin/zsh -c '. "$HOME/.zshrc"; ai-context')"
 
   [[ "${architecture_output}" == *"===== agents/coding.md ====="* ]] || \
     fail "architecture preset should include agents/coding.md"
@@ -80,6 +86,12 @@ run_zsh_smoke_test() {
     fail "backend preset should include agents/backend.md"
   [[ "${backend_output}" == *"===== agents/coding.md ====="* ]] || \
     fail "backend preset should include agents/coding.md"
+  [[ "${sdd_output}" == *"===== agents/architecture.md ====="* ]] || \
+    fail "sdd preset should include agents/architecture.md"
+  [[ "${sdd_output}" == *"===== agents/sdd.md ====="* ]] || \
+    fail "sdd preset should include agents/sdd.md"
+  [[ "${context_output}" == *"agents/sdd.md"* ]] || \
+    fail "ai-context should list agents/sdd.md"
 
   (
     cd "${tmp_project}"
@@ -94,6 +106,10 @@ run_zsh_smoke_test() {
     fail "scaffolded AGENTS.md should mention backend shared docs"
   grep -Fq 'agents/backend.md' "${tmp_project}/CLAUDE.md" || \
     fail "scaffolded CLAUDE.md should mention backend shared docs"
+  grep -Fq 'agents/sdd.md' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should mention sdd shared docs"
+  grep -Fq 'agents/sdd.md' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should mention sdd shared docs"
 }
 
 run_posix_smoke_test() {

@@ -1,22 +1,24 @@
 # Cursor Rules
 
-Use the files below as the default operating contract for this environment when they are available locally:
+Use this file as a thin adapter to the shared agent-kit guidance.
+
+## Required Context
+
+When available, read these before generating code, plans, or reviews:
 
 - `~/.agent-kit/agents/core.md`
 - `~/.agent-kit/agents/coding.md`
 
-## Required Behavior
+For non-trivial features, design changes, complex bug fixes, or
+high-regression-risk work, also read:
 
-1. Read both files before generating code, plans, or reviews when the session can access them.
-2. Prefer those files over generic assistant defaults.
-3. If project-local instructions conflict with the global rules, follow the project-local rule only when it is explicit and intentional.
-4. If the session cannot read `~/.agent-kit`, ask for the document contents instead of treating the path reference as enough.
+- `~/.agent-kit/agents/sdd.md`
 
-## Expected Outcome
+## Behavior
 
-- readable implementations over clever shortcuts
-- pragmatic trade-offs over speculative architecture
-- project-aware language and framework choices
-- clear separation of UI, state, domain logic, and external I/O where relevant
-
-If these files are missing or inaccessible, surface that immediately.
+- Prefer project-local instructions over shared defaults when the conflict is
+  explicit and intentional.
+- If `~/.agent-kit` cannot be read, ask for the needed document contents instead
+  of treating path references as sufficient.
+- Keep Cursor-specific rules here short; shared behavior belongs in
+  `agents/`, `prompts/`, or `rules/`.

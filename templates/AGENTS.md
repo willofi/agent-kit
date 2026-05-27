@@ -1,39 +1,29 @@
 # Repository Guidelines
 
-This file is the repo-local entry point for AI working rules.
+This file is the repo-local entry point for AI working rules. Keep project facts
+here and use shared agent-kit docs for reusable guidance.
 
 ## Instruction Precedence
 
 - Treat this file as the repo-local source of truth.
-- Project-local instructions in this file override shared docs when they conflict.
+- Project-local instructions here override shared docs when they conflict.
 - Use shared docs to extend these rules, not replace them.
-- If a section below is still a placeholder, inspect the repository directly instead of guessing.
+- If a section below is still a placeholder, inspect the repository directly
+  instead of guessing.
 
-## Default Working Rules
+## Shared Guidance
 
-Use these defaults unless project-local code clearly requires otherwise:
-
-- Prefer readable code over clever code.
-- For functional changes, prefer a test-first loop when requirements are clear: capture the expected behavior, implement it, then verify it.
-- Keep changes focused and avoid unrelated churn.
-- Match the existing stack and code style unless it is clearly harmful.
-- Validate assumptions at system boundaries and make failure paths easy to trace.
-- Test the changed behavior at the cheapest reliable level first.
-- Surface assumptions, risks, and trade-offs early.
-
-## Shared Baseline
-
-Use these shared docs by default when they are accessible:
+Load these shared docs by default when they are accessible:
 
 - baseline: `~/.agent-kit/agents/core.md`
 - coding: `~/.agent-kit/agents/coding.md`
 
-## Task-Specific Shared Docs
+For non-trivial features, design changes, complex bug fixes, or
+high-regression-risk work, also load:
 
-Load these shared docs only when they match the task:
+- sdd: `~/.agent-kit/agents/sdd.md`
 
-Do not load task-specific shared docs unless the current task requires them.
-When gathering additional shared or repository context, start with the smallest relevant scope and avoid bulk-loading files or docs.
+Load task-specific docs only when they match the task:
 
 - frontend: `~/.agent-kit/agents/frontend.md` for React, Next.js App Router, or client-side state
 - backend: `~/.agent-kit/agents/backend.md` for API design, database changes, authentication, background jobs, or server-side logic
@@ -44,15 +34,32 @@ When gathering additional shared or repository context, start with the smallest 
 - naming: `~/.agent-kit/rules/naming.md` when naming quality materially affects the work
 - git: `~/.agent-kit/rules/git.md` when commit or PR behavior matters
 
-If shared docs are not accessible in the current environment, continue with the local rules here and ask for specific shared contents only when they materially affect the task.
+If shared docs are inaccessible, continue with the local rules here and ask for
+specific shared contents only when they materially affect the task.
+
+## Spec-Driven Work
+
+Use the SDD flow for non-trivial work:
+
+1. Create or update `specs/<feature>/requirements.md`.
+2. Create or update `specs/<feature>/design.md`.
+3. Create or update `specs/<feature>/tasks.md`.
+4. Wait for approval or a clear implementation instruction.
+5. Implement task by task, updating checkboxes as tasks are verified.
+
+Use a Quick Fix path for obvious typos, small docs corrections, simple config
+edits, or clearly bounded one-file changes.
 
 ## Project Structure And Ownership
 
 <!-- Replace this section with repo-specific facts when they are known.
-Keep the file usable even before customization: if details are missing, inspect the repository directly instead of guessing. -->
+Keep the file usable before customization: if details are missing, inspect the
+repository directly instead of guessing. -->
 
-- Inspect the repository directly before assuming ownership, boundaries, or generated areas.
-- Document fragile paths, generated files, or ownership boundaries here when they become clear.
+- Inspect the repository directly before assuming ownership, boundaries, or
+  generated areas.
+- Document fragile paths, generated files, or ownership boundaries here when
+  they become clear.
 
 ## Build, Test, And Development Commands
 
@@ -71,13 +78,19 @@ Until then, discover commands from the repository itself rather than guessing. -
 
 <!-- Replace this section with project-specific rules when they matter. -->
 
-- Follow the project's existing import style. If it already uses path aliases, keep aliases defined in the appropriate project config and use them consistently.
-- If project-specific constraints are not documented yet, inspect the codebase and follow existing patterns rather than inventing new ones.
-- Add architecture, compatibility, deployment, naming, typing, or layering constraints here when they become stable expectations.
+- Follow the project's existing import style. If it already uses path aliases,
+  keep aliases defined in the appropriate project config and use them
+  consistently.
+- If project-specific constraints are not documented yet, inspect the codebase
+  and follow existing patterns rather than inventing new ones.
+- Add architecture, compatibility, deployment, naming, typing, or layering
+  constraints here when they become stable expectations.
 
 ## Review Notes
 
 <!-- Replace this section with repo-specific review risks when they are known. -->
 
-- Prioritize correctness, regression risk, and missing validation over style-only feedback.
-- Add common failure modes, migration concerns, rollout checks, or release-sensitive areas here when they become clear.
+- Prioritize correctness, regression risk, and missing validation over
+  style-only feedback.
+- Add common failure modes, migration concerns, rollout checks, or
+  release-sensitive areas here when they become clear.

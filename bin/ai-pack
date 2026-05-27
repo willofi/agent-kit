@@ -8,6 +8,7 @@ print_presets() {
   printf '%s\n' \
     'frontend' \
     'backend' \
+    'sdd' \
     'review' \
     'review-strict' \
     'refactor' \
@@ -54,6 +55,14 @@ case "${preset}" in
       agents/coding.md \
       agents/backend.md
     section_label='Backend targets:'
+    ;;
+  sdd)
+    run_ai_cat \
+      agents/core.md \
+      agents/coding.md \
+      agents/architecture.md \
+      agents/sdd.md
+    section_label='SDD targets:'
     ;;
   review)
     run_ai_cat \
