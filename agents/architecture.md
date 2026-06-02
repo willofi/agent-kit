@@ -1,11 +1,12 @@
 # Architecture Principles
 
-Architecture should help teams ship changes faster with less breakage. Favor boundaries that are easy to reason about, easy to change, and resilient under real product pressure.
+Architecture should make ordinary changes easier to reason about and safer to
+ship.
 
 ## Core Principles
 
 - Design for modularity with small, clear interfaces.
-- Preserve maintainability through explicit dependencies and data flow.
+- Keep dependencies and data flow explicit.
 - Scale by decomposing real hotspots, not by spreading complexity everywhere.
 
 ## Structural Rules
@@ -22,8 +23,6 @@ Architecture should help teams ship changes faster with less breakage. Favor bou
 - What outputs does it produce?
 - What invariants must hold?
 - What dependencies is it allowed to take?
-
-If those answers are fuzzy, the design will drift.
 
 ## Maintainability And Scale
 
@@ -45,8 +44,5 @@ Prefer designs where:
 
 - business rules scattered across unrelated layers
 - shared utilities that quietly become core dependencies for everything
-- architecture diagrams that do not match the code
 - framework-driven structure with no domain meaning
 - adding services, queues, or extra layers before real pressure exists
-
-The target architecture is one that supports growth without turning ordinary changes into risky coordination work.

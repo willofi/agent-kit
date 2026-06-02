@@ -1,12 +1,12 @@
 # Spec-Driven Development Guidelines
 
 Load this file for non-trivial features, design changes, complex bug fixes, or
-work with meaningful regression risk. The goal is to make the agent's intent,
-plan, and verification path explicit before implementation starts.
+work with meaningful regression risk. The goal is to make intent, plan, and
+verification explicit before implementation starts.
 
 ## When To Use SDD
 
-Use the SDD flow when the task:
+Use SDD when the task:
 
 - changes product behavior or public interfaces
 - spans multiple files, modules, services, or tools
@@ -14,9 +14,8 @@ Use the SDD flow when the task:
 - needs architectural judgment or migration planning
 - could create expensive regressions if misunderstood
 
-Use the Quick Fix path for obvious typos, small documentation corrections,
-simple config edits, or clearly bounded one-file changes. If a Quick Fix grows
-in scope, switch to SDD before continuing.
+Use Quick Fix for obvious typos, small documentation corrections, simple config
+edits, or clearly bounded one-file changes. If scope grows, switch to SDD.
 
 ## Required Flow
 
@@ -28,30 +27,18 @@ in scope, switch to SDD before continuing.
 6. Implement tasks in order unless the task file is updated with the reason.
 7. After each verified task, update its checkbox in `tasks.md` immediately.
 
-Do not treat a plan as complete until the implementation path, validation, and
-open assumptions are clear enough for another agent to execute.
+The plan is not complete until another agent could execute the path,
+validation, and assumptions without making new decisions.
 
 ## requirements.md
 
-Requirements should describe observable behavior and constraints, not the
-implementation. Prefer EARS-style statements with stable IDs:
+Describe observable behavior and constraints, not implementation. Prefer stable
+IDs and EARS-style statements:
 
 ```text
 - REQ-001
   WHEN <event or condition>,
   THE SYSTEM SHALL <observable behavior>.
-
-- REQ-002
-  IF <state or precondition>,
-  THE SYSTEM SHALL <observable behavior>.
-
-- REQ-003
-  WHILE <ongoing condition>,
-  THE SYSTEM SHALL <maintained behavior>.
-
-- REQ-004
-  WHERE <context or scope>,
-  THE SYSTEM SHALL <context-specific behavior>.
 ```
 
 Include negative cases, failure behavior, security, performance, accessibility,
@@ -59,7 +46,7 @@ or compatibility constraints when they materially affect the implementation.
 
 ## design.md
 
-Design should translate requirements into an implementation approach. Include:
+Translate requirements into an implementation approach. Include:
 
 - related requirement IDs
 - architecture, module, or ownership changes
@@ -70,14 +57,11 @@ Design should translate requirements into an implementation approach. Include:
 - alternatives rejected and why, but only when the trade-off matters
 - open questions and assumptions that could change the plan
 
-Keep design at the level needed to remove implementation ambiguity. Avoid
-speculative architecture that is not required by the current requirements.
+Keep design only detailed enough to remove implementation ambiguity.
 
 ## tasks.md
 
-Tasks should be checkbox items that are small, ordered, and verifiable.
-
-Each task should include:
+Tasks are small, ordered, verifiable checkbox items. Each task includes:
 
 - a stable task ID such as `T001`
 - related requirement IDs
@@ -93,9 +77,8 @@ Example:
 ```
 
 Only mark a task complete after implementation and verification. For partial
-work, leave the checkbox empty and add a short note. If the task list changes
-during implementation, update `tasks.md` and explain the reason in the task or
-final response.
+work, leave it unchecked with a short note. If tasks change during
+implementation, update `tasks.md` and explain why.
 
 ## Drift Control
 

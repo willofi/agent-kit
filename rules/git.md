@@ -1,6 +1,7 @@
 # Git Rules
 
-Git history should help a teammate understand what changed and why without reading every file. Favor small, intentional commits with clear messages.
+Git history should explain what changed and why without making a teammate read
+every file. Favor small, intentional commits with clear messages.
 
 ## Branch Strategy
 
@@ -12,14 +13,7 @@ When starting a new unit of work, create a dedicated branch from `main` before m
 - Pick a branch name that describes the actual change, not just the area of the codebase.
 - If the team or project already defines a different branching convention, follow that convention consistently.
 
-Examples:
-
-```text
-feature/add-bootstrap-smoke-test
-feature/support-custom-agent-presets
-fix/prevent-empty-scaffold-output
-refactor/simplify-context-loader
-```
+Example: `fix/prevent-partial-scaffold-output`
 
 ## Commit Message Format
 
@@ -37,13 +31,7 @@ Prefer conventional commits unless the project has an established different form
 <type>: <short description>
 ```
 
-Examples:
-
-```text
-feat: add retry handling for webhook delivery
-fix: prevent null state crash on project switch
-docs: document local bootstrap workflow
-```
+Example: `docs: document local bootstrap workflow`
 
 ## Message Quality
 

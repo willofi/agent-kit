@@ -37,7 +37,8 @@ README, and the `ai-pack sdd` preset.
 
 - New shared doc: `agents/sdd.md`
 - New preset: `ai-pack sdd`
-- Existing scaffold targets remain: `agents`, `claude`, `all`, `list`
+- Existing scaffold creation targets remain: `agents`, `claude`, `all`.
+  `list` remains a meta-command that prints creatable targets.
 - New dogfood spec artifacts:
   - `specs/agent-kit-sdd/requirements.md`
   - `specs/agent-kit-sdd/design.md`

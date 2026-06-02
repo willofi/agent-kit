@@ -128,6 +128,7 @@ main() {
   log "Use ai-cat <path> ... to print docs for assistants that cannot read local files"
   log "Use ai-pack <preset> ... for common task bundles"
   log "Use ai-scaffold <target> to generate project entry files like AGENTS.md"
+  log "Use ai-skill install <skill> <codex|claude|all> to install portable skills"
 }
 
 main "$@"

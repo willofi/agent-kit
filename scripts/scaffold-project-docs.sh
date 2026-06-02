@@ -23,7 +23,7 @@ fail() {
   exit 1
 }
 
-write_file() {
+assert_can_write() {
   local path
   path="$1"
 
@@ -51,7 +51,6 @@ write_template() {
   template_name="$1"
   path="$2"
 
-  write_file "${path}"
   temp_file="$(mktemp)"
   render_template "${template_name}" > "${temp_file}"
   mv "${temp_file}" "${path}"
@@ -60,6 +59,7 @@ write_template() {
 create_agents_md() {
   local path
   path="${TARGET_DIR}/AGENTS.md"
+  assert_can_write "${path}"
   write_template "AGENTS.md" "${path}"
   printf '[agent-kit] wrote %s\n' "${path}"
 }
@@ -67,8 +67,18 @@ create_agents_md() {
 create_claude_md() {
   local path
   path="${TARGET_DIR}/CLAUDE.md"
+  assert_can_write "${path}"
   write_template "CLAUDE.md" "${path}"
   printf '[agent-kit] wrote %s\n' "${path}"
+}
+
+create_all() {
+  assert_can_write "${TARGET_DIR}/AGENTS.md"
+  assert_can_write "${TARGET_DIR}/CLAUDE.md"
+  write_template "AGENTS.md" "${TARGET_DIR}/AGENTS.md"
+  printf '[agent-kit] wrote %s\n' "${TARGET_DIR}/AGENTS.md"
+  write_template "CLAUDE.md" "${TARGET_DIR}/CLAUDE.md"
+  printf '[agent-kit] wrote %s\n' "${TARGET_DIR}/CLAUDE.md"
 }
 
 main() {
@@ -111,8 +121,7 @@ main() {
       create_claude_md
       ;;
     all)
-      create_agents_md
-      create_claude_md
+      create_all
       ;;
     list)
       printf '%s\n' agents claude all

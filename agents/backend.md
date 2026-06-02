@@ -1,35 +1,37 @@
 # Backend Guidelines
 
-Load this file when the task involves API design, database schema changes, authentication, background jobs, or server-side logic.
+Load this file when the task involves API design, database schema changes,
+authentication, background jobs, or server-side logic.
 
-Use the host project's backend stack, validation library, ORM/query layer, and test runner unless the task explicitly calls for a change.
+Use the host project's backend stack, validation library, ORM/query layer, and
+test runner unless the task explicitly calls for a change.
 
-## Architecture & Logic
+## Boundaries
 
-- Separation of Concerns: Keep controllers and route handlers thin. Move business rules into service layers or domain modules.
-- Stateless Design: Prefer stateless request handling so the service can scale horizontally, unless the product explicitly requires stateful coordination.
-- Validation: Validate incoming data at system boundaries with the project's schema or validation tool. In TypeScript projects, use Zod when it is already present or intentionally chosen.
+- Keep route handlers thin; put business rules in services or domain modules.
+- Validate incoming data at system boundaries with the project's existing tool.
+- Keep request handling stateless unless the product needs coordination state.
 
-## Database & Type Safety
+## Data And Persistence
 
-- Type-Safe Queries: Use the project's existing typed ORM or query builder when available, such as Drizzle, Prisma, Kysely, or the local equivalent.
-- Migration First: For persistent schema changes, use the project's migration process to track database evolution.
-- Transaction Management: Be explicit about database transactions, especially for operations involving multiple table writes.
+- Use the existing typed ORM or query builder when available.
+- Track persistent schema changes through the project's migration process.
+- Be explicit about transactions, especially across multiple writes.
+- Avoid N+1 query paths; use pagination for collection endpoints.
 
-## HTTP API Design
+## API Contracts
 
-- Predictable Endpoints: For REST APIs, follow resource-oriented naming and HTTP method conventions. For GraphQL, RPC, or queues, follow the project's established contract style.
-- Error Handling: Use consistent error response structures. Provide meaningful HTTP status codes and error messages.
-- Performance: Use pagination for collection endpoints and avoid N+1 query problems by using proper joins or includes.
+- For REST, follow resource naming and HTTP method conventions.
+- For GraphQL, RPC, queues, or jobs, follow the established contract style.
+- Keep error response shapes consistent and meaningful.
 
 ## Security
 
-- Principle of Least Privilege: Ensure database users and API keys have only the minimum necessary permissions.
-- Sanitization: Even with an ORM, be cautious of raw query inputs to prevent SQL injection.
-- Sensitive Data: Never return sensitive fields such as passwords, password hashes, tokens, secrets, or internal-only identifiers in API responses.
+- Give database users and API keys only the permissions they need.
+- Treat raw query inputs as injection risks even when an ORM is present.
+- Never return passwords, hashes, tokens, secrets, or internal-only identifiers.
 
 ## Testing
 
-- Test-First Loop: When behavior is clear, write or update the failing test first, then implement the smallest change that makes it pass.
-- Integration Tests: Prioritize testing the integration between the API layer and the database for behavior that crosses persistence boundaries.
-- External Services: Replace third-party services such as payment gateways and mailers with fakes or mocks at the boundary so tests stay fast and deterministic.
+- Prioritize API-to-database integration tests for persistence behavior.
+- Fake third-party services at their boundary so tests stay deterministic.

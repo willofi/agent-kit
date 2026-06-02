@@ -44,8 +44,9 @@ for specific shared contents only when they materially affect the task.
 - `prompts/`: reusable review, refactor, and debug prompts
 - `rules/`: cross-cutting naming and Git rules
 - `cursor/`: Cursor-specific adapter rules
+- `skills/`: portable `SKILL.md` workflows for Codex, Claude, and similar tools
 - `templates/`: downstream entry-file templates consumed by `ai-scaffold`
-- `bin/`: installed CLI commands such as `ai-context`, `ai-cat`, `ai-pack`, and `ai-scaffold`
+- `bin/`: installed CLI commands such as `ai-context`, `ai-cat`, `ai-pack`, `ai-scaffold`, and `ai-skill`
 - `scripts/`: bootstrap, scaffold, and smoke-test automation
 - `specs/`: spec-driven work artifacts for this repository
 
