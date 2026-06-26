@@ -183,7 +183,7 @@ ai-scaffold all --force
 
 이 명령은 `templates/AGENTS.md`와 `templates/CLAUDE.md`를 바탕으로, `~/.agent-kit`의 공용 문서 경로를 참조하는 프로젝트 엔트리 파일을 만들어 줍니다. 저장소 루트의 `AGENTS.md`와 `CLAUDE.md`는 이 저장소 자체를 위한 문서이고, scaffold용 원본은 `templates/` 아래에서 따로 관리합니다.
 
-생성된 파일은 바로 사용할 수 있는 generic 기본값을 포함하고, 나중에 구체화할 부분만 주석으로 남깁니다. 프로젝트 구조나 실행 명령을 아직 적지 않았더라도, 문서가 비어 있는 상태로 시작하지 않도록 하는 쪽을 기본값으로 둡니다. 필요할 때만 불러오는 task-specific 문서 목록도 함께 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`, API, DB, server-side logic 작업용 `agents/backend.md`, 비사소한 spec-driven 작업용 `agents/sdd.md`도 안내됩니다.
+생성된 파일은 바로 사용할 수 있는 generic 기본값을 포함하고, 나중에 구체화할 부분만 주석으로 남깁니다. 프로젝트 구조나 실행 명령을 아직 적지 않았더라도, 문서가 비어 있는 상태로 시작하지 않도록 하는 쪽을 기본값으로 둡니다. 필요할 때만 불러오는 task-specific 문서 목록도 함께 들어갑니다. 예를 들어 React, Next.js, client-side state 작업용 `agents/frontend.md`, API, DB, server-side logic 작업용 `agents/backend.md`, 비사소한 spec-driven 작업용 `agents/sdd.md`도 안내됩니다. scaffold 기본값에는 non-trivial code 주석 범위, late-MVP 스펙 정합성 리뷰, Docker Compose root env와 per-app env 구분, Playwright 기반 E2E 검증 명시 여부 같은 실무 steering도 generic 형태로 포함됩니다.
 
 `ai-scaffold`는 `.kiro/`나 `specs/` 템플릿을 생성하지 않습니다. 공통 작업 규칙은 `agents/sdd.md`에서 관리하고, 실제 프로젝트별 spec 산출물은 각 프로젝트 안의 `specs/<feature>/requirements.md`, `design.md`, `tasks.md`처럼 작업 단위로 직접 만듭니다.
 

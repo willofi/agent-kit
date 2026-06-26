@@ -52,6 +52,10 @@ Use the SDD flow for non-trivial work:
 Use a Quick Fix path for obvious typos, small docs corrections, simple config
 edits, or clearly bounded one-file changes.
 
+During late-MVP or final checkpoints, add an explicit spec consistency review
+task that checks implemented routes, commands, response shapes, and documented
+behavior against the current spec artifacts.
+
 ## Project Structure And Ownership
 
 <!-- Replace this section with repo-specific facts when they are known.
@@ -86,8 +90,32 @@ shared baseline when they matter. -->
 - Follow the project's existing import style. If it already uses path aliases,
   keep aliases defined in the appropriate project config and use them
   consistently.
+- For non-trivial code, prefer explanatory comments at domain boundaries,
+  security-sensitive logic, transactions, external I/O, and major feature flows.
+  Use the project's preferred collaboration language for those comments, and
+  avoid broad comment churn for obvious implementation details.
+- When documenting deployment configuration, distinguish Docker Compose root
+  environment files from per-app environment files used by independently
+  deployed services.
+- For frontend work that expects E2E UI validation, state whether Playwright is
+  already available, newly introduced, or intentionally deferred; document the
+  validation command when it is part of the change.
 - Add architecture, naming, typing, layering, environment, deployment, or
   compatibility constraints here when they become stable expectations.
+
+## Review Notes
+
+<!-- Replace this section with repo-specific review risks when they are known. -->
+
+- Prioritize correctness, regression risk, and missing validation over
+  style-only feedback.
+- Watch for drift between SDD artifacts and late-MVP implementation details,
+  especially missing routes, command output, or response shape mismatches.
+- Deployment docs should not imply that Docker Compose environment layout is the
+  only supported layout when per-app deployment configuration exists or is
+  expected.
+- Add common failure modes, migration concerns, rollout checks, or
+  release-sensitive areas here when they become clear.
 
 ## Done Criteria
 

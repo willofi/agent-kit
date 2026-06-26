@@ -110,6 +110,22 @@ run_zsh_smoke_test() {
     fail "scaffolded AGENTS.md should mention sdd shared docs"
   grep -Fq 'agents/sdd.md' "${tmp_project}/CLAUDE.md" || \
     fail "scaffolded CLAUDE.md should mention sdd shared docs"
+  grep -Fq 'domain boundaries' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include scoped comment guidance"
+  grep -Fq 'domain boundaries' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should include scoped comment guidance"
+  grep -Fq 'spec consistency review' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include final spec consistency guidance"
+  grep -Fq 'spec consistency review' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should include final spec consistency guidance"
+  grep -Fq 'Docker Compose root' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should distinguish root and per-app env files"
+  grep -Fq 'Docker Compose root' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should distinguish root and per-app env files"
+  grep -Fq 'Playwright' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should mention Playwright validation decisions"
+  grep -Fq 'Playwright' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should mention Playwright validation decisions"
 }
 
 run_posix_smoke_test() {
