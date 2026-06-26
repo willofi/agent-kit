@@ -41,6 +41,10 @@ For SDD work, follow `~/.agent-kit/agents/sdd.md` and maintain
 `specs/<feature>/requirements.md`, `design.md`, and `tasks.md`. Use Quick Fix
 only for obvious, tightly bounded changes.
 
+During late-MVP or final checkpoints, add an explicit spec consistency review
+task that checks implemented routes, commands, response shapes, and documented
+behavior against the current spec artifacts.
+
 ## Project Structure
 
 <!-- Replace with repo-specific facts. Until then, inspect the repo directly. -->
@@ -66,6 +70,16 @@ If no reliable automated test exists, say so and describe the manual validation.
 <!-- Replace with project-specific rules that differ from shared guidance. -->
 
 - Follow existing project patterns before introducing new ones.
+- For non-trivial code, prefer explanatory comments at domain boundaries,
+  security-sensitive logic, transactions, external I/O, and major feature flows.
+  Use the project's preferred collaboration language for those comments, and
+  avoid broad comment churn for obvious implementation details.
+- When documenting deployment configuration, distinguish Docker Compose root
+  environment files from per-app environment files used by independently
+  deployed services.
+- For frontend work that expects E2E UI validation, state whether Playwright is
+  already available, newly introduced, or intentionally deferred; document the
+  validation command when it is part of the change.
 - Add architecture, compatibility, deployment, naming, typing, or layering
   constraints here when they become stable expectations.
 
@@ -75,3 +89,10 @@ If no reliable automated test exists, say so and describe the manual validation.
 
 - Prioritize correctness, regression risk, and missing validation over
   style-only feedback.
+- Watch for drift between SDD artifacts and late-MVP implementation details,
+  especially missing routes, command output, or response shape mismatches.
+- Deployment docs should not imply that Docker Compose environment layout is the
+  only supported layout when per-app deployment configuration exists or is
+  expected.
+- Add common failure modes, migration concerns, rollout checks, or
+  release-sensitive areas here when they become clear.

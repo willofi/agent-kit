@@ -69,14 +69,32 @@ for specific shared contents only when they materially affect the task.
   shared templates unless clearly marked as placeholders.
 - Prefer backwards-compatible CLI and preset changes. If behavior changes,
   update the migration guidance in `README.md`.
+- For non-trivial code, prefer Korean explanatory comments at domain
+  boundaries, security-sensitive logic, transactions, external I/O, and major
+  feature flows. Avoid broad comment churn for obvious implementation details.
 - For non-trivial changes in this repo, keep `specs/<feature>/requirements.md`,
   `design.md`, and `tasks.md` current; update completed task checkboxes as work
   is verified.
+- During late-MVP or final checkpoints, add an explicit spec consistency review
+  task that checks implemented routes, commands, response shapes, and documented
+  behavior against the current spec artifacts.
+- When documenting deployment configuration, distinguish Docker Compose root
+  environment files from per-app environment files used by independently
+  deployed services.
+- For frontend work that expects E2E UI validation, state whether Playwright is
+  already available, newly introduced, or intentionally deferred; document the
+  validation command when it is part of the change.
 
 ## Review Notes
 
 - Drift between `README.md` and the actual behavior of `bin/` or `scripts/` is a
   primary regression risk.
+- Drift between SDD artifacts and late-MVP implementation details is a primary
+  review risk, especially for missing routes, command output, or response shape
+  mismatches.
+- Deployment docs should not imply that Docker Compose environment layout is the
+  only supported layout when per-app deployment configuration exists or is
+  expected.
 - Shell setup changes must work in both the zsh path and the POSIX `.profile`
   path used by bootstrap.
 - Changes to scaffold output should verify that generic templates stay generic

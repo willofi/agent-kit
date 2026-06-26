@@ -136,6 +136,11 @@ ai-scaffold all --force
 만들지 않습니다. 프로젝트별 SDD 산출물은 필요한 작업 시점에 해당 프로젝트
 안에서 직접 만듭니다.
 
+생성된 파일은 바로 사용할 수 있는 generic 기본값을 포함합니다. scaffold
+기본값에는 non-trivial code 주석 범위, late-MVP 스펙 정합성 리뷰, Docker
+Compose root env와 per-app env 구분, Playwright 기반 E2E 검증 명시 여부 같은
+실무 steering도 generic 형태로 포함됩니다.
+
 ### `ai-skill`
 
 `skills/` 아래의 portable skill을 Codex나 Claude 경로에 설치합니다.

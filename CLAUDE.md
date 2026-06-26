@@ -16,7 +16,8 @@ the missing content that would materially change the work.
 
 ## Local Adapter Rules
 
-- Do not duplicate the full repo rules here; update `AGENTS.md` for repo facts.
+- Do not duplicate the full repo rules here; follow `AGENTS.md`, including its
+  Local Rules and Review Notes, and update `AGENTS.md` for repo facts.
 - Keep changes aligned with README, templates, and CLI behavior.
 - Preserve generic placeholders in `templates/`.
 - For SDD work, keep the relevant `specs/<feature>/tasks.md` checkboxes current
