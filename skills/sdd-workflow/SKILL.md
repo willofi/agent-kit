@@ -36,13 +36,24 @@ specs/<feature-name>/
   tasks.md
 ```
 
-4. Write requirements as observable behavior with stable `REQ-###` IDs.
-5. Write design with implementation approach, interfaces, risks, and validation.
-6. Write tasks as ordered checkbox items with requirement IDs and verification.
-7. Stop after the task plan unless the user clearly approves implementation.
-8. During implementation, complete tasks in order.
-9. After each verified task, update its checkbox in `tasks.md`.
-10. If implementation changes the plan, update the relevant spec file before continuing.
+4. Identify current behavior, target behavior, non-goals, domain vocabulary, and
+   risky boundaries before drafting details.
+5. Write requirements as observable behavior with stable `REQ-###` IDs or the
+   existing spec's ID style. Group larger specs by capability or workflow.
+6. Write design with repository context, architecture, interfaces, data/state,
+   key flows, error handling, security/privacy, correctness properties,
+   risks, alternatives, and validation where relevant.
+7. Write tasks as ordered, phased checkbox items with requirement IDs,
+   completion criteria, and verification.
+8. Review the spec against the quality bar in `~/.agent-kit/agents/sdd.md`
+   before asking for approval.
+9. Stop after the task plan unless the user clearly approves implementation.
+10. During implementation, complete tasks in order.
+11. After each verified task, update its checkbox in `tasks.md`.
+12. If implementation changes the plan, update the relevant spec file before
+    continuing.
+13. Capture durable lessons in `retrospective.md` only after active
+    requirements, design, and tasks are updated.
 
 ## Default User Prompt
 

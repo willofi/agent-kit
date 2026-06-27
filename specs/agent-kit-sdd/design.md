@@ -14,14 +14,21 @@ README, and the `ai-pack sdd` preset.
 - `REQ-008`: covered by `bin/ai-pack`.
 - `REQ-009`: covered by template edits only; scaffold targets remain unchanged.
 - `REQ-010`: covered by README and `scripts/test.sh` updates.
+- `REQ-011` to `REQ-014`: covered by the quality bar, substantial-spec
+  outline, and approval review checklist in `agents/sdd.md`.
+- `REQ-015`: covered by concise references in README and
+  `skills/sdd-workflow/SKILL.md`; the full protocol remains centralized in
+  `agents/sdd.md`.
 
 ## Approach
 
 - Add `agents/sdd.md` with concise, tool-neutral rules for:
   - when to use SDD versus Quick Fix
+  - spec quality bar for substantial work
   - `requirements.md` content and EARS examples
-  - `design.md` content
-  - `tasks.md` content and checkbox tracking
+  - `design.md` content and default outline
+  - `tasks.md` content, phasing, checkpoints, and checkbox tracking
+  - approval-time self-review
   - implementation gate and drift handling
 - Keep `agents/core.md` and `agents/coding.md` as general engineering guidance.
   Add only a short SDD trigger to `core.md`.
@@ -32,6 +39,8 @@ README, and the `ai-pack sdd` preset.
   - keep scaffolded templates standalone but shorter
 - Add `sdd` to `ai-pack` without changing `ai-scaffold` targets.
 - Update smoke tests to prevent preset, template, and context drift.
+- Keep the installable SDD skill short but make it explicitly invoke the
+  centralized quality bar before approval.
 
 ## Interfaces
 
@@ -43,6 +52,8 @@ README, and the `ai-pack sdd` preset.
   - `specs/agent-kit-sdd/requirements.md`
   - `specs/agent-kit-sdd/design.md`
   - `specs/agent-kit-sdd/tasks.md`
+- Updated SDD workflow skill:
+  - `skills/sdd-workflow/SKILL.md`
 
 ## Validation
 
@@ -51,6 +62,8 @@ README, and the `ai-pack sdd` preset.
   - shell syntax for changed scripts
   - `ai-pack list` includes `sdd`
   - `ai-pack sdd` includes `agents/architecture.md` and `agents/sdd.md`
+  - `ai-pack sdd` output includes the spec quality bar and substantial-spec
+    outline
   - scaffolded `AGENTS.md` and `CLAUDE.md` mention `agents/sdd.md`
   - `ai-context` lists `agents/sdd.md`
 

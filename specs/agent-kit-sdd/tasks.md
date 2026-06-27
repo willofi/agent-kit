@@ -28,3 +28,20 @@
   - Completion: smoke tests cover the new SDD behavior and all tasks are checked
     when verified.
   - Verification: `bash scripts/test.sh`.
+
+- [x] `T006` Strengthen the SDD spec quality bar (`REQ-011` through `REQ-014`)
+  - Completion: `agents/sdd.md` explains substantial-spec scope, requirements
+    grouping, design outline, phased tasks, checkpoints, and approval-time
+    self-review.
+  - Verification: inspect `agents/sdd.md`; `ai-pack sdd` includes the updated
+    guidance.
+
+- [x] `T007` Sync SDD workflow docs and skill (`REQ-015`, `REQ-010`)
+  - Completion: README and `skills/sdd-workflow/SKILL.md` point agents toward
+    the centralized quality bar without duplicating the full protocol.
+  - Verification: inspect README and skill text.
+
+- [x] `T008` Validate SDD quality-bar packaging (`REQ-010`, `REQ-015`)
+  - Completion: smoke tests assert the SDD preset exposes the quality bar and
+    substantial-spec outline.
+  - Verification: `bash scripts/test.sh`.

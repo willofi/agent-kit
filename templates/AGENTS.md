@@ -70,6 +70,14 @@ If no reliable automated test exists, say so and describe the manual validation.
 <!-- Replace with project-specific rules that differ from shared guidance. -->
 
 - Follow existing project patterns before introducing new ones.
+- For user-facing workflows, check the user's next likely action; make missing
+  follow-up steps explicit in UI, docs, or a follow-up spec.
+- Normalize third-party, streaming, and AI provider-native payloads before UI or
+  public interfaces; treat AI output as untrusted input.
+- For secret-bearing forms and APIs, check backend exposure, logs, browser UX,
+  and misleading credential field names.
+- For Docker or local service changes, account for existing volumes, images,
+  and containers, not only fresh setup.
 - For non-trivial code, prefer explanatory comments at domain boundaries,
   security-sensitive logic, transactions, external I/O, and major feature flows.
   Use the project's preferred collaboration language for those comments, and
@@ -91,6 +99,8 @@ If no reliable automated test exists, say so and describe the manual validation.
   style-only feedback.
 - Watch for drift between SDD artifacts and late-MVP implementation details,
   especially missing routes, command output, or response shape mismatches.
+- When implementation reveals durable lessons, capture them in
+  `retrospective.md` after updating active spec files as needed.
 - Deployment docs should not imply that Docker Compose environment layout is the
   only supported layout when per-app deployment configuration exists or is
   expected.

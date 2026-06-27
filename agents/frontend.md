@@ -32,6 +32,14 @@ Load this file when the task involves React, Next.js, or client-side state manag
 - Use TanStack Query (React Query) when the project already has it — do not introduce a second data-fetching layer.
 - Keep query keys predictable and documented at the call site.
 - Handle loading, error, and empty states explicitly.
+- Display normalized application data, not provider-native chunks, control
+  metadata, or raw streaming frames.
+
+## Sensitive Input UX
+
+- For secret-bearing forms such as credentials, tokens, API keys, and access
+  keys, consider autocomplete, password-save prompts, and field names as part
+  of the security UX.
 
 ## Styling
 

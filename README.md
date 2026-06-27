@@ -137,9 +137,9 @@ ai-scaffold all --force
 안에서 직접 만듭니다.
 
 생성된 파일은 바로 사용할 수 있는 generic 기본값을 포함합니다. scaffold
-기본값에는 non-trivial code 주석 범위, late-MVP 스펙 정합성 리뷰, Docker
-Compose root env와 per-app env 구분, Playwright 기반 E2E 검증 명시 여부 같은
-실무 steering도 generic 형태로 포함됩니다.
+기본값에는 다음 사용자 행동, provider/AI 경계, secret-bearing UX, 기존
+Docker 상태, retrospective, late-MVP 스펙 정합성, 배포 env, Playwright 검증
+같은 실무 steering도 generic 형태로 포함됩니다.
 
 ### `ai-skill`
 
@@ -174,6 +174,8 @@ ai-skill install sdd-workflow all --project
 
 - SDD와 Quick Fix 사용 기준
 - `requirements.md`, `design.md`, `tasks.md` 기대사항
+- capability/workflow 중심 spec 품질 기준
+- substantial spec의 권장 설계 outline과 승인 전 self-review 기준
 - 구현 전 승인 기준
 - 검증된 task의 checkbox 갱신
 - 구현 중 spec이 바뀔 때의 drift 처리
@@ -245,7 +247,8 @@ AI 도구가 로컬 파일을 읽을 수 있는지 불확실하면 경로만 전
 ## 운영 원칙
 
 - 공통 규칙은 이 저장소에서 관리합니다.
-- 프로젝트별 예외는 각 프로젝트 안에서 관리합니다.
+- 프로젝트별 예외와 반복해서 비싼 리스크는 각 프로젝트의 `AGENTS.md`에
+  축적합니다.
 - SDD 프로토콜은 `agents/sdd.md`에 두고, 실제 spec은 각 프로젝트의
   `specs/<feature>/`에 둡니다.
 - 엔트리 파일은 얇고 프로젝트별이어야 합니다.

@@ -24,12 +24,17 @@ test runner unless the task explicitly calls for a change.
 - For REST, follow resource naming and HTTP method conventions.
 - For GraphQL, RPC, queues, or jobs, follow the established contract style.
 - Keep error response shapes consistent and meaningful.
+- For third-party API proxies, streaming, and AI provider integrations,
+  normalize provider-native payloads into an internal response or event
+  contract before returning them.
 
 ## Security
 
 - Give database users and API keys only the permissions they need.
 - Treat raw query inputs as injection risks even when an ORM is present.
 - Never return passwords, hashes, tokens, secrets, or internal-only identifiers.
+- Never log passwords, hashes, tokens, secrets, or raw credential-bearing
+  payloads.
 
 ## Testing
 

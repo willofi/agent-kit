@@ -58,3 +58,31 @@ obvious small fixes.
 - `REQ-010`
   WHEN documentation changes public commands or presets,
   THE SYSTEM SHALL keep README examples, smoke tests, and implementation in sync.
+
+- `REQ-011`
+  WHEN an agent writes a substantial spec,
+  THE SYSTEM SHALL guide the agent to define current behavior, target behavior,
+  non-goals, domain vocabulary, risky boundaries, and traceability before
+  implementation.
+
+- `REQ-012`
+  WHEN an agent writes `requirements.md` for substantial work,
+  THE SYSTEM SHALL group requirements by capability or workflow and cover
+  success, empty, invalid, unauthorized, failure, recovery, and out-of-scope
+  behavior where relevant.
+
+- `REQ-013`
+  WHEN an agent writes `design.md` for substantial work,
+  THE SYSTEM SHALL provide a default outline that covers repository context,
+  architecture, components, data/state, contracts, flows, errors, security,
+  correctness properties, testing, rollout, alternatives, and open questions.
+
+- `REQ-014`
+  WHEN an agent writes `tasks.md` for substantial work,
+  THE SYSTEM SHALL guide phased, ordered, traceable, independently verifiable
+  tasks with checkpoint and final spec consistency review tasks where relevant.
+
+- `REQ-015`
+  WHEN the SDD workflow skill or README describes SDD usage,
+  THE SYSTEM SHALL surface the spec quality bar without duplicating the full
+  protocol outside `agents/sdd.md`.

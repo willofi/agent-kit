@@ -98,6 +98,12 @@ run_zsh_smoke_test() {
     fail "sdd preset should include agents/architecture.md"
   [[ "${sdd_output}" == *"===== agents/sdd.md ====="* ]] || \
     fail "sdd preset should include agents/sdd.md"
+  [[ "${sdd_output}" == *"Spec Quality Bar"* ]] || \
+    fail "sdd preset should include the spec quality bar"
+  [[ "${sdd_output}" == *"Correctness Properties"* ]] || \
+    fail "sdd preset should include the substantial spec design outline"
+  [[ "${sdd_output}" == *"Spec Review Before Approval"* ]] || \
+    fail "sdd preset should include the approval self-review checklist"
   [[ "${context_output}" == *"agents/sdd.md"* ]] || \
     fail "ai-context should list agents/sdd.md"
   [[ "${scaffold_list_output}" == *"all"* ]] || \
@@ -124,20 +130,26 @@ run_zsh_smoke_test() {
     fail "scaffolded CLAUDE.md should mention sdd shared docs"
   grep -Fq 'domain boundaries' "${tmp_project}/AGENTS.md" || \
     fail "scaffolded AGENTS.md should include scoped comment guidance"
-  grep -Fq 'domain boundaries' "${tmp_project}/CLAUDE.md" || \
-    fail "scaffolded CLAUDE.md should include scoped comment guidance"
   grep -Fq 'spec consistency review' "${tmp_project}/AGENTS.md" || \
     fail "scaffolded AGENTS.md should include final spec consistency guidance"
   grep -Fq 'spec consistency review' "${tmp_project}/CLAUDE.md" || \
     fail "scaffolded CLAUDE.md should include final spec consistency guidance"
+  grep -Fq 'next likely action' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include workflow completion guidance"
+  grep -Fq 'provider-native' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include provider normalization guidance"
+  grep -Fq 'secret-bearing' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include secret UX guidance"
+  grep -Fq 'existing volumes' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include existing runtime state guidance"
+  grep -Fq 'retrospective.md' "${tmp_project}/AGENTS.md" || \
+    fail "scaffolded AGENTS.md should include retrospective guidance"
   grep -Fq 'Docker Compose root' "${tmp_project}/AGENTS.md" || \
     fail "scaffolded AGENTS.md should distinguish root and per-app env files"
-  grep -Fq 'Docker Compose root' "${tmp_project}/CLAUDE.md" || \
-    fail "scaffolded CLAUDE.md should distinguish root and per-app env files"
   grep -Fq 'Playwright' "${tmp_project}/AGENTS.md" || \
     fail "scaffolded AGENTS.md should mention Playwright validation decisions"
-  grep -Fq 'Playwright' "${tmp_project}/CLAUDE.md" || \
-    fail "scaffolded CLAUDE.md should mention Playwright validation decisions"
+  grep -Fq 'thin Claude adapter' "${tmp_project}/CLAUDE.md" || \
+    fail "scaffolded CLAUDE.md should stay a thin adapter"
 
   printf 'existing claude file\n' > "${tmp_partial_project}/CLAUDE.md"
   (

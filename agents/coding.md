@@ -17,6 +17,13 @@ Use the host project's primary language, framework, and tooling unless the task 
 - Co-locate code that changes together.
 - Avoid circular dependencies.
 
+## External And AI Boundaries
+
+- Normalize third-party API, SSE, and AI provider payloads into internal
+  contracts before exposing them to UI components or public interfaces.
+- Treat AI-generated output as untrusted external input. For code generation,
+  extract, normalize, validate, and ask for user confirmation where practical.
+
 ## Implementation Preferences
 
 - Prefer guard clauses over deep nesting.
